@@ -11,4 +11,23 @@ const getMenus = async (req: Request, res: Response): Promise<void> => {
     }
 }
 
-export {getMenus};
+const addMenu = async (req: Request, res: Response): Promise<void> => {
+    try {
+        const body = req.body as Pick<IMenu, "name" | "description" | "price">;
+        const menu: IMenu = new Menu({
+            name: body.name,
+            description: body.description,
+            price: body.price
+        })
+
+        const newMenu : IMenu = await menu.save();
+
+        res
+            .status(201)
+            .json(menu)
+    } catch (error){
+        throw error;
+    }
+}
+
+export {getMenus, addMenu};
