@@ -1,11 +1,11 @@
 FROM node:16-alpine
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
-COPY package*.json ./
+COPY package.json ./
 
-RUN yarn install
+COPY yarn.lock ./
+
+RUN yarn install --frozen-lockfile
 
 COPY . .
-
-EXPOSE 4000

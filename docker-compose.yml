@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  api:
+    container_name: node_api
+    restart: on-failure
+    build: .
+    volumes:
+      - ./src:/app/src
+    ports:
+      - "4000:4000"
+    command: >
+      sh -c "yarn start"
+
