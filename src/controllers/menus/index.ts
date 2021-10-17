@@ -24,10 +24,29 @@ const addMenu = async (req: Request, res: Response): Promise<void> => {
 
         res
             .status(201)
-            .json(menu)
+            .json(newMenu)
     } catch (error){
         throw error;
     }
 }
 
-export {getMenus, addMenu};
+const updateMenu = async (req: Request, res: Response): Promise<void> => {
+    try {
+        const {
+            params: { id },
+            body
+        } = req;
+
+        const updateMenu: IMenu | null = await Menu.findByIdAndUpdate(
+            {_id: id}, body
+        );
+
+        res.status(200).json({
+            menu: updateMenu
+        })
+    } catch (error) {
+        throw error
+    }
+}
+
+export {getMenus, addMenu, updateMenu};

@@ -13,10 +13,6 @@ const menuSchema: Schema = new Schema({
     price: {
         type: String,
         required: true
-    },
-    created: {
-        type: Date,
-        default: Date.now
     }
 
 }, {timestamps: true})
