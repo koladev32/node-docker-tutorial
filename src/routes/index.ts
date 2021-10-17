@@ -1,8 +1,8 @@
 import { Router } from "express";
 import {getMenus} from "../controllers/menus";
 
-const router: Router = Router();
+const menuRoutes: Router = Router();
 
-router.get('/menus', getMenus);
+menuRoutes.get('/menus', getMenus);
 
-export default router;
+export default menuRoutes;
